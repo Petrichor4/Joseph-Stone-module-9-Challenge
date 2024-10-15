@@ -79,6 +79,7 @@ Render Functions
 const renderCurrentWeather = (currentWeather: any): void => {
   const { city, date, icon, iconDescription, tempF, windSpeed, humidity } =
     currentWeather;
+    console.log(currentWeather)
 
   // convert the following to typescript
   heading.textContent = `${city} (${date})`;
@@ -141,7 +142,7 @@ const renderForecastCard = (forecast: any) => {
 
 const renderSearchHistory = async (searchHistory: any) => {
   const historyList = await searchHistory.json();
-
+  
   if (searchHistoryContainer) {
     searchHistoryContainer.innerHTML = '';
 
@@ -235,7 +236,7 @@ const createHistoryDiv = () => {
 };
 
 const buildHistoryListItem = (city: any) => {
-  const newBtn = createHistoryButton(city.name);
+  const newBtn = createHistoryButton(city.city_name);
   const deleteBtn = createDeleteButton();
   deleteBtn.dataset.city = JSON.stringify(city);
   const historyDiv = createHistoryDiv();
@@ -272,8 +273,8 @@ const handleSearchHistoryClick = (event: any) => {
 
 const handleDeleteHistoryClick = (event: any) => {
   event.stopPropagation();
-  const cityID = JSON.parse(event.target.getAttribute('data-city')).id;
-  deleteCityFromHistory(cityID).then(getAndRenderHistory);
+  const cityID = JSON.parse(event.target.getAttribute('data-city'));
+  deleteCityFromHistory(cityID.city_id).then(getAndRenderHistory);
 };
 
 /*
