@@ -40,7 +40,6 @@ class HistoryService {
         console.error('Error parsing JSON:', err);
         parsedCities = [];
       }
-      console.log(parsedCities)
       return parsedCities;
     } catch (err) {
       console.error('Error reading file:', err);

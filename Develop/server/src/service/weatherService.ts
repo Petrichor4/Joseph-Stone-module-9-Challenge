@@ -56,7 +56,6 @@ class WeatherService {
         throw new Error("Failed to fetch location data");
       }
       const data = await response.json();
-      console.log(data)
       return {
         lat: data[0].lat,
         lon: data[0].lon,
@@ -90,8 +89,6 @@ class WeatherService {
   private async fetchAndDestructureLocationData(city: string) {
     try {
       const query = this.buildGeocodeQuery(city);
-
-      console.log(query)
 
       const locationData = await this.fetchLocationData(query);
 
@@ -151,7 +148,6 @@ class WeatherService {
     this.city_name = city;
     const coordinates = await this.fetchAndDestructureLocationData(city);
     const weatherData = await this.fetchWeatherData(coordinates);
-    console.log(weatherData)
     return weatherData;
   }
 }
