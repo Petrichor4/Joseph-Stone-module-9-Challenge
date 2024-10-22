@@ -125,7 +125,7 @@ class WeatherService {
       return true;
     }
     return false;
-  }).slice(0, 5);
+  }).slice(0, 6);
 
     const weatherData: Weather[] = fiveDay.map((data: any) => {
       const weatherObject: Weather = {
